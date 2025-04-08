@@ -1,0 +1,12 @@
+{
+	"/": [],
+	"/about": [],
+	"/blog/[slug]": [
+		"src/routes/blog/[slug]/+page.ts",
+		"src/routes/blog/[slug]/+page.server.ts"
+	],
+	"/settings": [
+		"src/routes/settings/+layout.ts",
+		"src/routes/settings/+layout.ts"
+	]
+}
