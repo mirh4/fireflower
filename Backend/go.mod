@@ -1,4 +1,4 @@
-module github.com/mirh4/fireflower.git
+module github.com/mirh4/fireflower
 
 go 1.24.2
 
