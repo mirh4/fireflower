@@ -1,4 +1,4 @@
-module github.com/mirh4/fireflower
+module fireflower/Backend
 
 go 1.24.2
 
