@@ -9,6 +9,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 )
 
 var DB *sql.DB
@@ -25,8 +26,17 @@ func main() {
 	router.HandleFunc("/notes", getNotes).Methods("GET")
 	router.HandleFunc("/notes", createNote).Methods("POST")
 
+	// Add CORS middleware
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:5173"},
+		AllowedMethods:   []string{"GET", "POST"},
+		AllowedHeaders:   []string{"Content-Type"},
+		AllowCredentials: true,
+	})
+	handler := c.Handler(router)
+
 	log.Println("Server running on :8080")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8080", handler))
 }
 
 func getNotes(w http.ResponseWriter, r *http.Request) {
